@@ -7,7 +7,7 @@ public class Main extends JFrame{
     public static final int SLEEP_TIME = 5;
     private Level1 level1 =new Level1();
     private MenuPanel menuPanel;
-    private Car[] cars = level1.getCars();
+     Car[] cars = level1.getCars();
 
 
     JLabel board;
@@ -60,7 +60,11 @@ public class Main extends JFrame{
             }
         });
 
+
+
         Movement mv=new Movement(back.getComponents());
+        mv.setCars(cars);
+
 
         add(back);
 
@@ -70,9 +74,12 @@ public class Main extends JFrame{
         setVisible(true);
     }
 
-    public void mainGameLoop(){
-        Thread thread = new Thread(() -> {
-            while (true){
+    public void mainGameLoop()
+
+    {
+        Thread thread = new Thread(() ->
+        {
+            /*while (true){
                 for (Car obstacle : cars){
                     if(cars[0].checkCollision(obstacle)){
                         System.out.println("COLLISION!");
@@ -84,7 +91,7 @@ public class Main extends JFrame{
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
-            }
+            }*/
         });
     }
 

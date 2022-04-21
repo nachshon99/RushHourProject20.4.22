@@ -36,9 +36,8 @@ public class Level1 extends Level{
 
     public void paint(Graphics graphics)
     {
-        for (int i = 0; i < cars.length; i++)
-        {
-            cars[i].paint(graphics);
+        for (Car car : cars) {
+            car.paint(graphics);
         }
     }
     public void drawing(int xx, int yy){

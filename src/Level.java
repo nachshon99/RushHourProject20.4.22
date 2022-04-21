@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public abstract class Level extends JPanel {
-    private Car[] cars;
+     Car[] cars;
 
     public Car[] getCars() {
         return cars;

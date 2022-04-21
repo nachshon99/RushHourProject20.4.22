@@ -26,7 +26,8 @@ public class CustomRectangle {
         return y;
     }
 
-    public int getWidth() {
+    public int getWidth()
+    {
         return width;
     }
 
@@ -38,7 +39,9 @@ public class CustomRectangle {
         return color;
     }
 
-    public void setX(int x) {
+    public void setX(int x)
+
+    {
         this.x = x;
     }
 

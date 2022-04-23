@@ -5,7 +5,8 @@ public class MenuPanel extends JPanel {
 
 
 
-    public MenuPanel(int x, int y, int width, int height){
+    public MenuPanel(int x, int y, int width, int height)
+    {
         this.setBounds(x,y,width,height);
         this.setBackground(Color.GRAY);
         this.setLayout(null);

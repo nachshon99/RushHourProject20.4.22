@@ -2,13 +2,19 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CustomRectangle {
-    private int x;
-    private int y;
-    private int width;
-    private int height;
-    private Color color;
+    public int x;
+    public int y;
+    public int width;
+    public int height;
+    public Color color;
+     Movement movement;
+     GameScene gameScene;
 
-    public CustomRectangle(int x, int y, int width, int height, Color color){
+
+
+
+    public CustomRectangle(int x, int y, int width, int height, Color color)
+    {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -57,8 +63,23 @@ public class CustomRectangle {
         this.height = height;
     }
 
+    public  void  update()
+    {
+       this.x= (int) movement.currentMousePt.getX();
+       this.y= (int) movement.currentMousePt.getY();
+    }
+
     public void setColor(Color color) {
         this.color = color;
     }
+
+
+    public void paint (Graphics g)
+    {
+        g.fillRect(x,y,width,height);
+        g.setColor(color);
+    }
+
+
 
 }

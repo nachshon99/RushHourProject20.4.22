@@ -11,74 +11,78 @@ public class Car extends JPanel {
     public final int CAR_Y_WIDTH = 120;
     public final int CAR_Y_HEIGHT = 240;
     public final int FULL_LINE = 120;
-
+    public String type;
     public final int LONG_CAR_X_WIDTH = 360;
     public final int LONG_CAR_Y_HEIGHT = 360;
     public final int MAKE_START_FROM_ONE = -1;
-    private CustomRectangle car = new CustomRectangle();
+    public CustomRectangle car=new CustomRectangle();
+    Movement movement;
+    GameScene gameScene;
+
+
+
+
+    public String getType()
+    {
+        return this.type;
+    }
+    public  Car ()
+    {
+
+    }
 
     public CustomRectangle getCar() {
         return car;
     }
 
-    public Car() {
-    }
+    public Car(String carType_xCar_yCar_xTruck_yTruck, int line, int column, Color color)
+    {
 
-    public Car(String carType_xCar_yCar_xTruck_yTruck, int line, int column, Color color) {
         x = FULL_LINE * (column + MAKE_START_FROM_ONE) + Board.BOARD_START_X + CORRECTION;
         y = FULL_LINE * (line + MAKE_START_FROM_ONE) + Board.BOARD_START_Y + CORRECTION;
         car.setX(x);
         car.setY(y);
         car.setColor(color);
 
-        setBackground(car.getColor());
         setLocation(x, y);
 
-
-        if (Objects.equals(carType_xCar_yCar_xTruck_yTruck, "xCar")) {
+        if (Objects.equals(carType_xCar_yCar_xTruck_yTruck, "xCar"))
+        {
             car.setWidth(CAR_X_WIDTH - CORRECTION);
             car.setHeight(CAR_X_HEIGHT - CORRECTION);
-        } else if (Objects.equals(carType_xCar_yCar_xTruck_yTruck, "yCar")) {
+            this.type="car";
+        } else if (Objects.equals(carType_xCar_yCar_xTruck_yTruck, "yCar"))
+        {
             car.setWidth(CAR_Y_WIDTH - CORRECTION);
             car.setHeight(CAR_Y_HEIGHT - CORRECTION);
-        } else if (Objects.equals(carType_xCar_yCar_xTruck_yTruck, "xTruck")) {
+            this.type="car";
+        } else if (Objects.equals(carType_xCar_yCar_xTruck_yTruck, "xTruck"))
+        {
             car.setWidth(LONG_CAR_X_WIDTH - CORRECTION);
             car.setHeight(CAR_X_HEIGHT - CORRECTION);
-        } else if (Objects.equals(carType_xCar_yCar_xTruck_yTruck, "yTruck")) {
+            this.type="truck";
+        } else if (Objects.equals(carType_xCar_yCar_xTruck_yTruck, "yTruck"))
+        {
             car.setWidth(CAR_Y_WIDTH - CORRECTION);
             car.setHeight(LONG_CAR_Y_HEIGHT - CORRECTION);
+            this.type="truck";
         }
         setSize(car.getWidth(), car.getHeight());
+        car.movement=movement;
+        car.gameScene=gameScene;
+    }
+    public void  update()
+    {
+
+        car.update();
     }
 
-    /*public Car isPressed(MouseEvent event){
-        boolean pressed = false;
-        if(event.getSource().equals(Car.class)){
-            pressed = true;
-        }
-        return (Car) event.getSource();
-    }*/
-
-    public boolean checkCollision(Car car){
-        boolean collision = false;
-        Rectangle obstacleCar = new Rectangle(
-                    car.getX(),
-                    car.getY(),
-                    car.getWidth(),
-                    car.getY()
-        );
-        Rectangle carBody = new Rectangle(
-                this.getX(),
-                this.getY(),
-                this.getWidth(),
-                this.getY()
-        );
-
-        if(obstacleCar.intersects(carBody)){
-            collision = true;
-        }
-
-        return collision;
+    public  void paint(Graphics g)
+    {
+        car.paint(g);
     }
+
+
+
 
 }
